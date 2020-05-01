@@ -1,5 +1,8 @@
 # reusable-component-design
 
+## Purpose
+Main idea is to find out a design implementation that is highly-reusable, based on a set of rules and standards, and non-side-effect. Also, it should be able to take care of events and communications between components independently, which means, any of the components should never share any logic itself with any component unnecessarily. Last but not least, components should implement as less amount of logic as possible to keep component highly maintainable, testable, and more importantly reusable.
+
 ## Project setup
 ```
 npm install
@@ -30,5 +33,7 @@ npm run lint
 npm run test:unit
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Roadmap
+
+- Implement component communication case.
+  - Use Case: When a Category selected from a Drop Down, Sub Category Drop Down should be filled with data accordingly
