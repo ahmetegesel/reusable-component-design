@@ -1,5 +1,6 @@
 {
   "name": "reusable-component-design",
+  "description": "PoC for constructing Reusable Component Design Composite Pattern with vue.js",
   "version": "0.1.0",
   "private": true,
   "scripts": {
