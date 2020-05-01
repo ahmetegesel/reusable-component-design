@@ -14,7 +14,9 @@ module.exports = {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'import/extensions': 'off',
-    'comma-dangle': 'off'
+    'comma-dangle': 'off',
+    'import/prefer-default-export': 'off',
+    'func-names': ['warn', 'never']
   },
   overrides: [
     {
