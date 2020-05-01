@@ -9,13 +9,13 @@
 </template>
 
 <script>
-import { getProduct } from '../../lib/mockApi';
+import { getProduct } from '../../../lib/mockApi';
 
-import TextField from '../components/TextField';
-import CategorySelection from '../components/CategorySelection';
+import TextField from '../../components/v-model-components/TextField';
+import CategorySelection from '../../components/v-model-components/CategorySelection';
 
 export default {
-  name: 'Product',
+  name: 'ProductVModel',
   components: {
     TextField,
     CategorySelection,

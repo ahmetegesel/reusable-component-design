@@ -1,14 +1,14 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Product from '../views/Product.vue';
+import ProductVModel from '../views/v-model-views/ProductVModel.vue';
 
 Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/',
-    name: 'Product',
-    component: Product,
+    path: '/product-v-model',
+    name: 'ProductVModel',
+    component: ProductVModel,
   },
 ];
 

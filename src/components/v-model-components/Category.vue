@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { getMainCategories } from '../../lib/mockApi';
+import { getMainCategories } from '../../../lib/mockApi';
 
 export default {
   name: 'Category',
