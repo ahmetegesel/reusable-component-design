@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import ProductVModel from '../views/v-model-views/ProductVModel.vue';
+import ProductProduce from '../views/produce-views/ProductProduce.vue';
 
 Vue.use(VueRouter);
 
@@ -9,6 +10,11 @@ const routes = [
     path: '/product-v-model',
     name: 'ProductVModel',
     component: ProductVModel,
+  },
+  {
+    path: '/product-produce',
+    name: 'ProductProduce',
+    component: ProductProduce,
   },
 ];
 
