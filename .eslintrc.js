@@ -16,7 +16,8 @@ module.exports = {
     'import/extensions': 'off',
     'comma-dangle': 'off',
     'import/prefer-default-export': 'off',
-    'func-names': ['warn', 'never']
+    'func-names': ['warn', 'never'],
+    'linebreak-style': 'off',
   },
   overrides: [
     {

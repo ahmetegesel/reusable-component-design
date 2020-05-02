@@ -1,10 +1,11 @@
 <template>
   <div>
-    <text-field :model="product.title"/>
-    <category-selection
-      :category="product.categoryId"
-      :subCategory="product.subCategoryId"
+    <text-field v-model="product.title"/>
+    <category-selection v-model="categories"
     />
+    <hr/>
+    <p>Data:</p>
+    <p>{{product}}</p>
   </div>
 </template>
 
@@ -24,6 +25,20 @@ export default {
     return {
       product: {},
     };
+  },
+  computed: {
+    categories: {
+      get() {
+        return {
+          category: this.product.categoryId,
+          subCategory: this.product.subCategoryId
+        };
+      },
+      set(value) {
+        this.product.categoryId = value.category;
+        this.product.subCategoryId = value.subCategory;
+      }
+    },
   },
   async mounted() {
     this.product = await getProduct(1);
