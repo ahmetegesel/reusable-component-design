@@ -1,6 +1,6 @@
 <template>
   <div>
-    <select v-model="lazyModel">
+    <select v-model="lazyValue" @change="onSubCategoryChanged">
       <option v-for="(category ,key) in categories" :key="`category-${key}`"
               v-bind:value="category.id">
         {{category.name}}
@@ -15,7 +15,7 @@ import { getCategoriesByParent } from '../../../lib/mockApi';
 export default {
   name: 'SubCategory',
   props: {
-    model: {
+    value: {
       type: Number,
     },
     parent: {
@@ -24,23 +24,29 @@ export default {
   },
   data() {
     return {
-      lazyModel: undefined,
+      lazyValue: undefined,
       categories: [],
     };
   },
   methods: {
     async getCategories(parent) {
-      console.log('parent', parent, this.lazyModel);
       return getCategoriesByParent(parent);
     },
+    onSubCategoryChanged() {
+      this.$emit('input', this.lazyValue);
+    }
   },
   watch: {
-    model(value) {
-      this.lazyModel = value;
+    value(value) {
+      this.lazyValue = value;
     },
     async parent(value, oldValue) {
       if (value !== oldValue) {
         this.categories = await this.getCategories(value);
+
+        if (oldValue) {
+          this.lazyValue = undefined;
+        }
       }
     },
   },

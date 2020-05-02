@@ -1,7 +1,7 @@
 <template>
   <div>
-    <category ref="category" :model="lazyCategory"/>
-    <sub-category ref="subCategory" :model="lazySubCategory" :parent="lazyCategory"/>
+    <category ref="category" v-model="lazyValue.category"/>
+    <sub-category ref="subCategory" v-model="lazyValue.subCategory" :parent="lazyValue.category"/>
   </div>
 </template>
 
@@ -16,25 +16,27 @@ export default {
     SubCategory,
   },
   props: {
-    category: {
-      type: Number,
-    },
-    subCategory: {
-      type: Number,
+    value: {
+      type: Object,
     },
   },
   data() {
     return {
-      lazyCategory: undefined,
-      lazySubCategory: undefined,
+      lazyValue: {
+        category: undefined,
+        subCategory: undefined
+      },
     };
   },
   watch: {
-    category(value) {
-      this.lazyCategory = value;
+    value(value) {
+      this.lazyValue = value;
     },
-    subCategory(value) {
-      this.lazySubCategory = value;
+    lazyValue: {
+      deep: true,
+      handler(value) {
+        this.$emit('input', value);
+      },
     },
   },
 };

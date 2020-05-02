@@ -1,6 +1,6 @@
 <template>
   <div>
-    <input type="text" v-model="lazyModel"/>
+    <input type="text" v-model="lazyValue"/>
   </div>
 </template>
 
@@ -8,19 +8,22 @@
 export default {
   name: 'TextField',
   props: {
-    model: {
+    value: {
       type: String,
     },
   },
   data() {
     return {
-      lazyModel: '',
+      lazyValue: '',
     };
   },
   watch: {
-    model(value) {
-      this.lazyModel = value;
+    value(value) {
+      this.lazyValue = value;
     },
+    lazyValue(value) {
+      this.$emit('input', value);
+    }
   },
 };
 </script>
