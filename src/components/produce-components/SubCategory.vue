@@ -1,46 +1,59 @@
 <template>
   <div>
-    <select v-model="lazyModel">
-      <option v-for="(category ,key) in categories" :key="`category-${key}`"
-              v-bind:value="category.id">
-        {{category.name}}
-      </option>
-    </select>
+    <p-field ref="selectField" :field="field">
+      <p-select :items="categories" :value="lazyValue" :item-value="'id'"></p-select>
+    </p-field>
   </div>
 </template>
 
 <script>
 import { getCategoriesByParent } from '../../../lib/mockApi';
+import PField from './generic/base/PField';
+import PSelect from './generic/PSelect';
 
 export default {
   name: 'SubCategory',
+  components: {
+    PField,
+    PSelect
+  },
   props: {
-    model: {
-      type: Number,
+    value: {
+      type: String,
+    },
+    field: {
+      type: String,
+      default: 'subCategory'
     },
     parent: {
-      type: Number,
+      type: String,
     },
   },
   data() {
     return {
-      lazyModel: undefined,
+      lazyValue: undefined,
       categories: [],
     };
   },
   methods: {
+    produce() {
+      return this.$refs.selectField.produce();
+    },
     async getCategories(parent) {
-      console.log('parent', parent, this.lazyModel);
       return getCategoriesByParent(parent);
     },
   },
   watch: {
-    model(value) {
-      this.lazyModel = value;
+    value(value) {
+      this.lazyValue = value;
     },
     async parent(value, oldValue) {
       if (value !== oldValue) {
         this.categories = await this.getCategories(value);
+
+        if (oldValue) {
+          this.lazyValue = undefined;
+        }
       }
     },
   },

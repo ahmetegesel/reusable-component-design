@@ -1,7 +1,11 @@
 <template>
   <div>
-    <category ref="category" :model="lazyCategory"/>
-    <sub-category ref="subCategory" :model="lazySubCategory" :parent="lazyCategory"/>
+    <category ref="category" field="categoryId" :value="lazyCategory" @change="onCategoryChanged"/>
+    <sub-category
+      ref="subCategory"
+      field="subCategoryId"
+      :value="lazySubCategory"
+      :parent="lazyCategory"/>
   </div>
 </template>
 
@@ -17,10 +21,10 @@ export default {
   },
   props: {
     category: {
-      type: Number,
+      type: String,
     },
     subCategory: {
-      type: Number,
+      type: String,
     },
   },
   data() {
@@ -28,6 +32,17 @@ export default {
       lazyCategory: undefined,
       lazySubCategory: undefined,
     };
+  },
+  methods: {
+    produce() {
+      return {
+        ...this.$refs.category.produce(),
+        ...this.$refs.subCategory.produce()
+      };
+    },
+    onCategoryChanged(value) {
+      this.lazyCategory = value;
+    }
   },
   watch: {
     category(value) {
