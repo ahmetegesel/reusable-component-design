@@ -1,7 +1,10 @@
 <template>
   <div>
     <text-field v-model="product.title"/>
-    <category-selection v-model="categories"/>
+    <category-selection
+      :category.sync="product.categoryId"
+      :subCategory.sync="product.subCategoryId"
+    />
     <hr/>
     <p>Data:</p>
     <p>{{product}}</p>
@@ -24,20 +27,6 @@ export default {
     return {
       product: {},
     };
-  },
-  computed: {
-    categories: {
-      get() {
-        return {
-          category: this.product.categoryId,
-          subCategory: this.product.subCategoryId
-        };
-      },
-      set(value) {
-        this.product.categoryId = value.category;
-        this.product.subCategoryId = value.subCategory;
-      }
-    },
   },
   async mounted() {
     this.product = await getProduct('1');
