@@ -16,7 +16,7 @@ export default {
   name: 'Category',
   props: {
     value: {
-      type: Number,
+      type: String,
     },
   },
   data() {

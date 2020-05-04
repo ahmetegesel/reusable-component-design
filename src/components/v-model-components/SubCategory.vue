@@ -16,10 +16,10 @@ export default {
   name: 'SubCategory',
   props: {
     value: {
-      type: Number,
+      type: String,
     },
     parent: {
-      type: Number,
+      type: String,
     },
   },
   data() {

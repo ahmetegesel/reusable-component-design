@@ -1,8 +1,7 @@
 <template>
   <div>
     <text-field v-model="product.title"/>
-    <category-selection v-model="categories"
-    />
+    <category-selection v-model="categories"/>
     <hr/>
     <p>Data:</p>
     <p>{{product}}</p>
@@ -41,7 +40,7 @@ export default {
     },
   },
   async mounted() {
-    this.product = await getProduct(1);
+    this.product = await getProduct('1');
   },
 };
 </script>
