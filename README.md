@@ -35,5 +35,5 @@ npm run test:unit
 
 ## Roadmap
 
-- Implement component communication case.
-  - Use Case: When a Category selected from a Drop Down, Sub Category Drop Down should be filled with data accordingly
+- ~~Implement component communication case.~~
+  - ~~Use Case: When a Category selected from a Drop Down, Sub Category Drop Down should be filled with data accordingly~~
